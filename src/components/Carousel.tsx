@@ -19,21 +19,17 @@ function Carousel({ cards }: CarouselProps) {
 
     const prevSlide = () => {
         if (index > 0 && !transitioning) {
-            setTransitioning(true); // Evitar que se pueda hacer otro cambio antes de que termine la animación
-            setTimeout(() => {
-                setIndex((prev) => prev - 1);
-                setTransitioning(false);
-            }, 500); // Duración de la animación en CSS
+            setIndex(index - 1); // Se actualiza el índice de inmediato
+            setTransitioning(true); // Bloquea nuevas interacciones mientras dura la animación
+            setTimeout(() => setTransitioning(false), 500); // Duración de la animación en CSS
         }
     };
 
     const nextSlide = () => {
         if (index < cards.length - 1 && !transitioning) {
+            setIndex(index + 1); // Se actualiza el índice de inmediato
             setTransitioning(true);
-            setTimeout(() => {
-                setIndex((prev) => prev + 1);
-                setTransitioning(false);
-            }, 500);
+            setTimeout(() => setTransitioning(false), 500);
         }
     };
 
