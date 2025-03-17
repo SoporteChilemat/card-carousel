@@ -61,14 +61,14 @@
 
 /* Tarjeta izquierda */
 .cardLeft {
-  transform: translateX(-120%) rotate(-10deg);
-  background: rgba(214, 209, 209, 0.285);
+  transform: translateX(-110%) rotate(-10deg) translateY(8%);
+  background: #d6d1d149;
   backdrop-filter: saturate(180%) blur(10px);
 }
 
 /* Tarjeta derecha */
 .cardRight {
-  transform: translateX(120%) rotate(10deg);
+  transform: translateX(110%) rotate(10deg) translateY(8%);
   background: rgba(214, 209, 209, 0.285);
   backdrop-filter: saturate(180%) blur(10px);
 }
