@@ -1,0 +1,129 @@
+.carouselContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Contenedor con imagen de fondo y blur */
+.carouselContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.pexels.com/photos/1561020/pexels-photo-1561020.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* Contenedor de las tarjetas */
+.cardsWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Estilos base para todas las tarjetas */
+.card {
+  position: absolute;
+  width: 80vw;
+  height: 70vh;
+  border: 1px solid #999;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Tarjeta central */
+.cardCenter {
+  z-index: 10;
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  background: rgba(208, 199, 199, 0.75);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Tarjeta izquierda */
+.cardLeft {
+  transform: translateX(-120%) rotate(-10deg);
+  background: rgba(214, 209, 209, 0.285);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Tarjeta derecha */
+.cardRight {
+  transform: translateX(120%) rotate(10deg);
+  background: rgba(214, 209, 209, 0.285);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Movimiento de la tarjeta central a la izquierda */
+.moveLeft {
+  transform: translateX(-120%) rotate(-10deg) scale(0.9);
+  opacity: 0.7;
+}
+
+/* Movimiento de la tarjeta central a la derecha */
+.moveRight {
+  transform: translateX(120%) rotate(10deg) scale(0.9);
+  opacity: 0.7;
+}
+
+/* Tarjeta que entra desde la izquierda al centro */
+.enterFromLeft {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Tarjeta que entra desde la derecha al centro */
+.enterFromRight {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Botones de navegación */
+.carouselButtons {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+/* Estilos de cada botón */
+.button {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  background: #222;
+}
